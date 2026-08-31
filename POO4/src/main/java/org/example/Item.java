@@ -1,6 +1,6 @@
 package org.example;
 
-public class Item {
+    public static void main(String[] args) {
     private String nome;
     private double preco;
 

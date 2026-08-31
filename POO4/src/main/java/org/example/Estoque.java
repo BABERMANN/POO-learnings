@@ -21,7 +21,7 @@ public class Estoque {
     }
 
     public boolean removerItem(int idx){
-         if(idx >= qtdItens || idx < 0) return false;//melhorar isso array fechar os espacos
+         if(idx >= itens.length || idx < 0) return false;//melhorar isso array fechar os espacos
         if(itens[idx] == null) return false;
         itens[idx] = null;
         qtdItens --;
