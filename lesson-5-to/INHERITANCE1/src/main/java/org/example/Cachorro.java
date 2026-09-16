@@ -11,4 +11,9 @@ public class Cachorro extends Animal {
     public String getRaca() {
         return raca;
     }
+
+    @Override
+    public String emitirSom(){
+        return "WOOOOOOOOOOOOOF";
+    }
 }
