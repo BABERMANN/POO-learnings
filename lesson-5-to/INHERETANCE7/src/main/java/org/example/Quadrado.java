@@ -6,10 +6,11 @@ public class Quadrado extends FormaGeometrica {
     public Quadrado(String nome, double lado) {
         super(nome);
 
-        if(lado < 4 || lado > 4) throw new IllegalArgumentException();
+        if (lado < 4 || lado > 4) throw new IllegalArgumentException();
         this.lado = lado;
     }
 
-    private double area(){
-
+    private double area() {
+        return lado * lado;
+    }
 }
