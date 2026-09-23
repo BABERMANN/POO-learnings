@@ -1,15 +1,15 @@
 package org.example;
 
 public class Circulo extends FormaGeometrica {
-    private  double raio;
+    private double raio;
 
     public Circulo(String nome, double raio) {
         super(nome);
         this.raio = raio;
     }
 
-    private double area(){
-        double PI = Math.PI;
-        return PI * (raio * raio);
+    @Override
+    public double area() {
+        return Math.PI * raio * raio;
     }
 }

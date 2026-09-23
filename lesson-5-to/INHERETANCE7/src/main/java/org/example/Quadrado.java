@@ -5,12 +5,12 @@ public class Quadrado extends FormaGeometrica {
 
     public Quadrado(String nome, double lado) {
         super(nome);
-
-        if (lado < 4 || lado > 4) throw new IllegalArgumentException();
+        if (lado <= 0) throw new IllegalArgumentException("Lado deve ser positivo");
         this.lado = lado;
     }
 
-    private double area() {
+    @Override
+    public double area() {
         return lado * lado;
     }
 }

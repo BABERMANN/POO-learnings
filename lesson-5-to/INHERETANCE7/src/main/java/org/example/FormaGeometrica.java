@@ -1,6 +1,6 @@
 package org.example;
 
-public class FormaGeometrica {
+public abstract class FormaGeometrica {
     private String nome;
 
     public FormaGeometrica(String nome) {
@@ -11,5 +11,5 @@ public class FormaGeometrica {
         return nome;
     }
 
-    public double area; // obriga toda subclasse implementar esse metodo
+    public abstract double area();
 }
