@@ -1,6 +1,6 @@
 package org.example;
 
-public class Quadrado extends FormaGeometrica {
+public final class Quadrado extends FormaGeometrica {
     private double lado;
 
     public Quadrado(String nome, double lado) {
