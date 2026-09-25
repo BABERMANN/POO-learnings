@@ -2,10 +2,9 @@ package org.example;
 
 public class Violao extends Instrumento{
 
-    public Violao(String tipo) {
-        super(tipo);
+    public Violao() {
+        super("Violao");
     }
-
 
     public String afinar(){
         StringBuilder sb = new StringBuilder();
