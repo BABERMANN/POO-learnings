@@ -1,6 +1,6 @@
 package org.example;
 
-public class Circulo extends FormaGeometrica {
+public final class Circulo extends FormaGeometrica { // final impede que qualquer outra classe herde de Circulo
     private double raio;
 
     public Circulo(String nome, double raio) {
