@@ -16,5 +16,11 @@ public class Main {
         System.out.println();
 
         System.out.println(apolo.toString());
+
+        System.out.println();
+
+        System.out.println(apolo.equals(eredin));
+        System.out.println(eredin.equals(eredin));
+
     }
 }

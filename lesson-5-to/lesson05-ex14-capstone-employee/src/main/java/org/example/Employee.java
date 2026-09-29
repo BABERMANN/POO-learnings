@@ -2,6 +2,8 @@ package org.example;
 
 import java.time.LocalDate;
 
+import java.util.Objects;
+
 public abstract sealed class Employee permits FullTimeEmployee, PerHourEmployee {
     private String id;
     private String name;
@@ -29,5 +31,17 @@ public abstract sealed class Employee permits FullTimeEmployee, PerHourEmployee 
         return sb.toString();
     }
 
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+
+        Employee employee = (Employee) obj;
+
+        return id.equals(employee.id);
+    }
+
     public abstract double salary();
 }
+
+
