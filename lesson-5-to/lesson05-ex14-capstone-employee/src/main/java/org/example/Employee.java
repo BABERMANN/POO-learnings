@@ -41,6 +41,11 @@ public abstract sealed class Employee permits FullTimeEmployee, PerHourEmployee 
         return id.equals(employee.id);
     }
 
+    @Override
+    public int hashCode(){
+        return Objects.hash(id);
+    }
+
     public abstract double salary();
 }
 
