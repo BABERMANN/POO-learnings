@@ -15,5 +15,19 @@ public abstract sealed class Employee permits FullTimeEmployee, PerHourEmployee 
         this.dateOfEmployment = dateOfEmployment;
     }
 
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Nome: ").append(name);
+        sb.append("\n");
+        sb.append("Funcionario ID: ").append(id);
+        sb.append("\n");
+        sb.append("Cargo: ").append(jobTitle);
+        sb.append("\n");
+        sb.append("Data de contratacao: ").append(dateOfEmployment);
+
+        return sb.toString();
+    }
+
     public abstract double salary();
 }
