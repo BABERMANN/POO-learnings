@@ -9,7 +9,7 @@ public class Main {
         System.out.println(violaoDoEredin.afinar());
 
 
-        //instrumento é uma classe generica ela representa qualquer ela representa qualquer instrumento musical
+        //instrumento é uma classe generica ela representa qualquer  instrumento musical
         // o  tipo precisa ser passado por paramentro pelos filhos ja que Instrumento nao sabe de antemao qual é o tipo
 
     }
