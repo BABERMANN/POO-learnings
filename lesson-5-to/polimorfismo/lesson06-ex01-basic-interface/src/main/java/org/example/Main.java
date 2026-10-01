@@ -7,12 +7,17 @@ public class Main {
         Boleto boletoDoEredin = new Boleto(650.67, 3);
         CartaoCredito cartaoDoEredon = new CartaoCredito(1500, 5);
         Boleto boletoGeladeira = new Boleto(250,2);
+        CartaoCredito cartaoDoEredoni = new CartaoCredito(1530, 5);
 
-        Pagavel[] contas = {boletoDoEredin,boletoGeladeira,cartaoDoEredon};
+        Pagavel[] contas = {boletoDoEredin,boletoGeladeira,cartaoDoEredon,cartaoDoEredoni};
 
         for(Pagavel conta : contas){
             System.out.println("[" + conta.getClass().getSimpleName() + "]" + "valor: " + "[" + conta.calcularValor() + "]");
+            if(conta instanceof CartaoCredito cartao){
+                System.out.println(cartao.gerarFatura());
+            }
         }
+
 //        System.out.println(boletoDoEredin.getValorOriginal());
 //        System.out.println(boletoDoEredin.calcularValor());
 //

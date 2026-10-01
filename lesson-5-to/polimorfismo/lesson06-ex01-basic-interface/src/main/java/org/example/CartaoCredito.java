@@ -14,4 +14,10 @@ public class CartaoCredito implements Pagavel {
         return valorOriginal * 1.05;
     }
 
+    public String gerarFatura(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("valor da fatura esse mes: ").append(valorOriginal / parcelas);
+        return sb.toString();
+    }
+
 }
