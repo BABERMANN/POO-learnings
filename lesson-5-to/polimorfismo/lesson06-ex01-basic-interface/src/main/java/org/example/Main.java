@@ -22,6 +22,10 @@ public class Main {
         System.out.println();
         System.out.println(boletoDoEredin.resumo());
 
+        System.out.println();
+        System.out.println("Contas a pagar:");
+        System.out.println(Pagavel.categoriaPadrao());
+
 
 
     }

@@ -7,4 +7,8 @@ public interface Pagavel {
         return "Valor a pagar: " + calcularValor();
     }
 
+    static String categoriaPadrao(){  // metodo estatico reponde pela pela classe em geral
+        return "Conta a pagar generica";
+    }
+
 }
