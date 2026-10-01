@@ -19,6 +19,10 @@ public class Main {
             System.out.println(conta.calcularValor());
         }
 
+        System.out.println();
+        System.out.println(boletoDoEredin.resumo());
+
+
 
     }
     }
