@@ -9,5 +9,13 @@ public class Main {
 
         alertaPorEmail.dispararAlerta("Vai estudar java");
         alertaPorSms.dispararAlerta("Vai estudar java");
+
+        System.out.println();
+
+        Notificador n = NotificadorFactory.paraAmbienteDeproducao();
+        n.enviar("Teste de fabrica");
+
+        Notificador m = NotificadorFactory.paraAmbienteDeTeste();
+        m.enviar("para ambiente de teste");
     }
 }
