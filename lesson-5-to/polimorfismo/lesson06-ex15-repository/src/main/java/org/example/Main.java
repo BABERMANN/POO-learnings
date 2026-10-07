@@ -32,18 +32,10 @@ public class Main {
 
         Employee employee1 = findEmployeeService.findById("01");
 
+        employee1.setSalary(7000.00);
+
         if(employee1 != null) {
             System.out.println(employee1);
         }
-
-
-
-
-
-
-
-
-
-
     }
 }
