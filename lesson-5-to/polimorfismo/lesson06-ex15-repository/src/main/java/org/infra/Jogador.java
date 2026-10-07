@@ -1,6 +1,7 @@
 package org.infra;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 public class Jogador {
@@ -80,6 +81,16 @@ public class Jogador {
         return Objects.hashCode(id);
     }
 
-    public
+    public double increaseSalary(){
+        double bonus = 0.05;
+        if(Period.between(dateOfEmployement,LocalDate.now()).getYears() > 2){
+            bonus = 0.167;
+        }
+        return salary * bonus;
+    }
+
+    public void jiglePrint(){
+        System.out.println("Essa é a LEUD com o " + name + "entao esquece");
+    }
 
 }
