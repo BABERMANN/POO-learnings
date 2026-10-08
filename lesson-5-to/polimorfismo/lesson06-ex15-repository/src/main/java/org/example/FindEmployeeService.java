@@ -11,4 +11,7 @@ public class FindEmployeeService {
         return repository.findById(id);
     }
 
+    public Employee[] findAll() {
+        return repository.findAll();
+    }
 }
