@@ -90,7 +90,7 @@ public class Jogador {
     }
 
     public void jiglePrint(){
-        System.out.println("Essa é a LEUD com o " + name + "entao esquece");
+        System.out.println("Essa é a LEUD com o " + name + " entao esquece");
     }
 
 }
