@@ -1,6 +1,7 @@
 package org.example;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Main {
     static void main(String[] args) {
@@ -37,5 +38,9 @@ public class Main {
         if(employee1 != null) {
             System.out.println(employee1);
         }
+
+        Employee[] copy = findEmployeeService.findAll();
+        System.out.println(Arrays.toString(copy));
+
     }
 }
