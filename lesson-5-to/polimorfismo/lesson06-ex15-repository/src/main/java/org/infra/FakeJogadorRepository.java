@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FakeJogadorRepository implements Repository<String,Jogador> {
-    private Map<String,Jogador> jogadores = new HashMap<>();
+    private Map<String,Jogador> jogadores = new HashMap<>(); // TODO trade to linkedHashMap
 
     @Override
     public void save(Jogador entity) {
