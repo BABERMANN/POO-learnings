@@ -1,34 +1,33 @@
 package org.example;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class FakeEmployeeRepository implements Repository<String,Employee> {
-    private Employee[] employees;
+    private ArrayList<Employee> employees;
     private int p;
 
     public FakeEmployeeRepository() {
-        employees = new Employee[99]; // TODO array aumentar de tamanho
+        employees = new ArrayList<>();
     }
 
     @Override
     public void save(Employee entity) {
-        employees[p] = entity;
-        p++;
+        employees.add(entity);
     }
 
     @Override
     public Employee findById(String id) {
-        for (int i = 0; i < p; i++) {
-            if (employees[i].getId().equals(id)) {
-                return employees[i];
+        for (Employee employee : employees) {
+            if (employee.getId().equals(id)) {
+                return employee;
             }
         }
-        return null;
+      return null;
     }
 
     @Override
     public Employee[] findAll() {
-        return Arrays.copyOf(employees, p);
+        return employees.toArray(new Employee[0]);
     }
 }
 
@@ -36,7 +35,7 @@ public class FakeEmployeeRepository implements Repository<String,Employee> {
 //    @Override
 //    public Employee[] findAll() {
 //        Employee[] search = new Employee[p];
-//        for(int i = 0; i < p; i++){
+//        for(i = 0; i < p; i++){
 //            search[i] = employees[i];
 //        }
 //        return search;
