@@ -11,4 +11,8 @@ public class FindJogador {
     public Jogador findById(String id) {
         return repository.findById(id);
     }
+
+    public Jogador[] findAll() {
+        return repository.findAll();
+    }
 }
