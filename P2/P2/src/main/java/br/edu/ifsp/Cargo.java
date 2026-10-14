@@ -1,0 +1,9 @@
+package br.edu.ifsp;
+
+public enum Cargo {
+  PRESIDENTE,
+    GOVERNADOR,
+    SENADOR,
+    DEPUTADO_FEDERAL,
+    DEPUTADO_ESTADUAL
+}
