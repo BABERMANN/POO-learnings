@@ -1,5 +1,6 @@
 package FunctionInterface;
 
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 public class _Predicate {
@@ -12,6 +13,7 @@ public class _Predicate {
         String phone = "07000000000";
         String phone2 = "07300000000";
         String phone3 = "0730000000";
+        String phone4 = "12300000000";
 
         System.out.println("Using Predicate:");
         System.out.println(isPhoneNumberValidPredicate.test(phone));
@@ -22,7 +24,10 @@ public class _Predicate {
                 .test(phone2) + "\n");
 
         System.out.println("Esse telefone é valido OU contem numero 3");
-        System.out.println(isPhoneNumberValidPredicate.or(contaisNumber).test(phone3));
+        System.out.println(isPhoneNumberValidPredicate.or(contaisNumber).test(phone3) + "\n");
+
+        System.out.println("Esse numero comeca com zero? caso nao queria esse teste, faca se contem o numero 3");
+        System.out.println(StartWith0.test(phone4, false));
 
 
     }
@@ -35,6 +40,8 @@ public class _Predicate {
     static  Predicate<String> contaisNumber = phone ->
             phone.contains("3");
 
+    static BiPredicate<String,Boolean> StartWith0 = (phone,startsWith) ->
+            startsWith ? phone.startsWith("0") : contaisNumber.test(phone);
 
     static boolean isPhoneNumberValid(String phoneNumber){
         return phoneNumber.startsWith("07") && phoneNumber.length() == 11;
