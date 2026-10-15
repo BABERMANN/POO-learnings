@@ -27,7 +27,7 @@ public class _Predicate {
         System.out.println(isPhoneNumberValidPredicate.or(contaisNumber).test(phone3) + "\n");
 
         System.out.println("Esse numero comeca com zero? caso nao queria esse teste, faca se contem o numero 3");
-        System.out.println(StartWith0.test(phone4, false));
+        System.out.println(StartWith0OrContains3.test(phone4, false));
 
 
     }
@@ -40,7 +40,7 @@ public class _Predicate {
     static  Predicate<String> contaisNumber = phone ->
             phone.contains("3");
 
-    static BiPredicate<String,Boolean> StartWith0 = (phone,startsWith) ->
+    static BiPredicate<String,Boolean> StartWith0OrContains3 = (phone,startsWith) ->
             startsWith ? phone.startsWith("0") : contaisNumber.test(phone);
 
     static boolean isPhoneNumberValid(String phoneNumber){
