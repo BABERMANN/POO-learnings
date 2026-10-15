@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,5 +28,14 @@ public class Main {
             for(Pessoa feminio : Feminino){
                 System.out.println(feminio.toString());
             }
-        }
+
+
+        // Modelo declarativo mais intuitivo, menor, declaro tudo que eu quero que seja feito
+
+        List<Pessoa> feminino2 = pessoas.stream()
+                .filter(pessoa -> Pessoa.Genero.FEMINIO.equals(pessoa.genero))
+                .collect(Collectors.toList());
+        feminino2.stream().forEach(System.out::println);
+
+    }
     }
