@@ -5,10 +5,11 @@ import java.util.function.Consumer;
 
 public class _Consumer {
 
+    //psvma
     static void main(String[] args) {
         Consumidor eredin = new Consumidor("Eredin","19982043798");
         Consumidor apolo = new Consumidor("Apolo","19999999999");
-        bemVindo(eredin);
+        bemVindo(eredin,false);
         bemVindoConsumer.accept(eredin);
         System.out.println();
         bemVindoConsumer2.accept(eredin,false);
@@ -24,10 +25,10 @@ public class _Consumer {
                     + (mostrarTelefone ? consumidor.phone : "***********") + " em nossa loja!!");
 
 
-    static void bemVindo(Consumidor consumidor){
+    static void bemVindo(Consumidor consumidor,boolean mostrarTelefone){
         System.out.println("Ola, " + consumidor.name
                 + ", Obrigado por registrar seu telefone: "
-                + consumidor.phone + " em nossa loja!!");
+                + (mostrarTelefone ? consumidor.phone : "***********") + " em nossa loja!!");
     }
 
     static Consumer<Consumidor> bemVindoConsumer = consumidor ->
