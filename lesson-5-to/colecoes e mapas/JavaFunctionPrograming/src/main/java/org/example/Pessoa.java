@@ -9,8 +9,8 @@ public class Pessoa {
         this.genero = genero;
     }
 
-    enum Genero{
-        MASCULINO,FEMINIO
+    public enum Genero{
+        MASCULINO, BINARIO, FEMINIO
     }
 
     @Override
