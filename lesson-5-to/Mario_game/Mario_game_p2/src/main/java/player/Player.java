@@ -1,4 +1,4 @@
-package org.example;
+package player;
 
 import java.util.List;
 import java.util.Objects;
