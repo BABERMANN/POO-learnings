@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Random;
+
 public class MarioGame {
     private int Score;
     private MarioState state;
@@ -9,6 +11,14 @@ public class MarioGame {
         this.Score = 0;
     }
 
+    public void TakeMystryBox(){
+        Random random = new Random();
+        switch(random.nextInt(3)){
+            case 0 : takeFeather(); break;
+            case 1 : takeFlower(); break;
+            case 2 : takeMushromm(); break;
+        }
+    }
 
 
     //delegate methods
