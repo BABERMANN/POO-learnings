@@ -20,6 +20,10 @@ public class MarioGame {
         }
     }
 
+    public void nextStage(MarioState next){
+        this.state = next;
+    }
+
 
     //delegate methods
     public void takeFlower() {
