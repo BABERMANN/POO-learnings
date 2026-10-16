@@ -3,12 +3,12 @@ package game;
 import java.util.Random;
 
 public class MarioGame {
-    private int Score;
+    private int score;
     private MarioState state;
 
     public MarioGame() {
         this.state = new Small(this);
-        this.Score = 0;
+        this.score = 0;
     }
 
     public void TakeMystryBox(){
@@ -22,6 +22,10 @@ public class MarioGame {
 
     public void nextStage(MarioState next){
         this.state = next;
+    }
+
+    public void incrementScore(){
+        this.score += 1000;
     }
 
 
