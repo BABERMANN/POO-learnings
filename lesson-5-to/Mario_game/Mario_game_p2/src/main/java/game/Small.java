@@ -19,7 +19,7 @@ public class Small implements MarioState {
 
     @Override
     public void takeMushroom() {
-        mario.nextState(new Big());
+        mario.nextState(new Big((MarioState) mario));
     }
 
     @Override
