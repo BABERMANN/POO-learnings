@@ -9,21 +9,21 @@ public class Cape implements MarioState{
 
     @Override
     public void takeFlower() {
-
+        mario.nextStage(new Fire(mario));
     }
 
     @Override
     public void takeFeather() {
-
+        mario.nextStage(new Cape(mario));
     }
 
     @Override
     public void takeMushromm() {
-
+        mario.incrementScore();
     }
 
     @Override
     public void takeDamage() {
-
+        mario.nextStage(new Big(mario));
     }
 }

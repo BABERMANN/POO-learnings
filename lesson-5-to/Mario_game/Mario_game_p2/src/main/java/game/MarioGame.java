@@ -20,14 +20,14 @@ public class MarioGame {
         }
     }
 
-    public void nextStage(MarioState next){
-        this.state = next;
-    }
 
     public void incrementScore(){
         this.score += 1000;
     }
 
+    public void nextStage(MarioState next){
+        this.state = next;
+    }
 
     //delegate methods
     public void takeFlower() {
