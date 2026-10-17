@@ -44,8 +44,15 @@ public class MarioGame {
                 time, estadoAtual,anterior,atual,score));
     }
 
+    public boolean isDone(){
+//        return state.getClass().getSimpleName().equals("Dead");
+
+      return state instanceof Dead;
+    }
+
     //delegate methods
     public void takeFlower() {
+        estadoAtual = "Took Flower";
         state.takeFlower();
 
     }
