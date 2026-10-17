@@ -1,6 +1,7 @@
 package game;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public class MarioGame {
 
     private List<String> eventos = new ArrayList<>();
     private static final DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-    private static String estadoAtual;
+    private String estadoAtual;
 
     public MarioGame() {
         this.state = new Small(this);
@@ -29,17 +30,18 @@ public class MarioGame {
     }
 
 
-    public void incrementScore(){
-        this.score += 1000;
-    }
 
     public void nextStage(MarioState next){
         MarioState anterior = state;
         this.state = next;
+
+        String antes = anterior.getClass().getSimpleName();
+        String prox = next.getClass().getSimpleName();
+        registerEvent(antes ,prox);
     }
 
     private void registerEvent(String anterior, String atual){
-        String time = LocalDate.now().format(FORMAT);
+        String time = LocalDateTime.now().format(FORMAT);
         eventos.add(String.format("[%s] %s | %s => %s | score = %d",
                 time, estadoAtual,anterior,atual,score));
     }
@@ -50,11 +52,26 @@ public class MarioGame {
       return state instanceof Dead;
     }
 
+    @Override
+    public String toString() {
+        return "MarioGame{" +
+                "eventos=" + eventos +
+                '}';
+    }
+
     //delegate methods
     public void takeFlower() {
         estadoAtual = "Took Flower";
         state.takeFlower();
+    }
 
+
+    public void incrementScore(){
+        estadoAtual = "recive points";
+        this.score += 1000;
+        MarioState Atual = state;
+        String mesmoEstado = Atual.getClass().getSimpleName();
+        registerEvent(mesmoEstado,mesmoEstado);
     }
 
     public void takeFeather() {

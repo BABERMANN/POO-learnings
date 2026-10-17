@@ -19,6 +19,8 @@ public class Principal {
 
         System.out.println(game.getScore());
 
+        System.out.println(game.toString());
+
 
     }
 }
