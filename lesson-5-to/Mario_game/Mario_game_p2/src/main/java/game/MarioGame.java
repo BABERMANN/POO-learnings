@@ -40,9 +40,8 @@ public class MarioGame {
 
     private void registerEvent(String anterior, String atual){
         String time = LocalDate.now().format(FORMAT);
-
-
-
+        eventos.add(String.format("[%s] %s | %s => %s | score = %d",
+                time, estadoAtual,anterior,atual,score));
     }
 
     //delegate methods
@@ -64,5 +63,9 @@ public class MarioGame {
     public void takeDamage() {
         estadoAtual = "Took Damage";
         state.takeDamage();
+    }
+
+    public int getScore() {
+        return score;
     }
 }
