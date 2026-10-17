@@ -18,7 +18,7 @@ public class Small implements MarioState{
     }
 
     @Override
-    public void takeMushromm() {
+    public void takeMushroom() {
         mario.nextStage(new Big(mario));
     }
 

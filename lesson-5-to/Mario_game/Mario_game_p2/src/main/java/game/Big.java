@@ -18,7 +18,7 @@ public class Big implements MarioState{
     }
 
     @Override
-    public void takeMushromm() {
+    public void takeMushroom() {
         mario.incrementScore();
     }
 

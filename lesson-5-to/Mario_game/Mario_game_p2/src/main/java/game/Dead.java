@@ -18,7 +18,7 @@ public class Dead implements MarioState{
     }
 
     @Override
-    public void takeMushromm() {
+    public void takeMushroom() {
 
     }
 

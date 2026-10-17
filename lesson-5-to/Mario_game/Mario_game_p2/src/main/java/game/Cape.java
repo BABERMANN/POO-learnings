@@ -18,7 +18,7 @@ public class Cape implements MarioState{
     }
 
     @Override
-    public void takeMushromm() {
+    public void takeMushroom() {
         mario.incrementScore();
     }
 
