@@ -40,11 +40,7 @@ public abstract class Item implements Indefinable<String>, Reportable {
 
     public abstract int getMaxLoanDays();
 
-
-
-
-
-
-
-
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
 }
