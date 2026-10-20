@@ -20,8 +20,6 @@ public class Pizza extends  Produto{
 
     @Override
     public String toString() {
-        return "Pizza{" + getNome() +
-                ", tamanho=" + tamanho +
-                '}';
+        return getCategoria() + ", " + getCodigo() + ", " + getNome() + ", " + getPrecoBase() + ", " + tamanho;
     }
 }

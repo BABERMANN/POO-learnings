@@ -21,8 +21,6 @@ public class Sobremesa extends Produto{
 
     @Override
     public String toString() {
-        return "Sobremesa{" + getNome() +
-                ", calorias=" + calorias +
-                '}';
+        return getCategoria() + ", " + getCodigo() + ", " + getNome() + ", " + getPrecoBase() + ", " + calorias;
     }
 }

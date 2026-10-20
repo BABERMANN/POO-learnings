@@ -22,8 +22,6 @@ public class Bebida extends Produto {
 
     @Override
     public String toString() {
-        return "Bebida{" + getNome() +
-                ", Litros=" + Litros +
-                '}';
+        return getCategoria() + ", " + getCodigo() + ", " + getNome() + ", " + getPrecoBase() + ", " + Litros;
     }
 }
