@@ -1,9 +1,9 @@
 package modelo;
 
 public enum Tamanho {
-    P(0.8),
-    M(1.0),
-    G(1.3);
+    P(1.1),
+    M(1.5),
+    G(2.0);
 
     private final double fator;
 

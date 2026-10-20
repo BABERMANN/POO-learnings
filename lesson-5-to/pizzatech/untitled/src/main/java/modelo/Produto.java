@@ -26,6 +26,10 @@ public abstract class Produto {
         return nome;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
