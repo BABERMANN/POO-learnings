@@ -3,6 +3,7 @@ package modelo;
 import javax.print.DocFlavor;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cardapio {
     private Map<Categoria, Map<Integer, Produto>> produtos;
