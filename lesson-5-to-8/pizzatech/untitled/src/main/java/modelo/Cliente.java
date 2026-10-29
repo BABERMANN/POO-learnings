@@ -52,7 +52,7 @@ public class Cliente implements Comparable<Cliente> {
             if (r != 0) return r;
         }
 
-        int r = Integer.compare(meus.size(), deles.size());   /
+        int r = Integer.compare(meus.size(), deles.size());
         if (r != 0) return r;
 
         return nome.compareTo(outro.nome);
