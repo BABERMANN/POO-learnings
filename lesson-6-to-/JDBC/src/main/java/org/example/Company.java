@@ -41,15 +41,26 @@ public class Company {
 
     public boolean fire(String id){
         if(id == null || id.isBlank()) {
-            throw new IllegalArgumentException("Id nulo ou invalido");
+            throw new IllegalArgumentException("Id null or invalid");
         }
         Employee e = findById(id);
         if(e == null) return false;
 
         employeesList.remove(e);
         return true;
-}
+    }
 
+    public List<Employee> getJobTitleEmployees(String jobTitle){
+        if(jobTitle == null || jobTitle.isBlank()) throw new IllegalArgumentException("JobTitle invalid");
+
+        List<Employee> jobRelated = new ArrayList<>();
+        for(Employee e: employeesList) {
+                if(jobTitle.equalsIgnoreCase(e.getJobTitle())){
+                    jobRelated.add(e);
+                }
+        }
+        return jobRelated;
+    }
 
     public List<Employee> getEmployeesList() {
         return employeesList;
