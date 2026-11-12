@@ -61,6 +61,21 @@ public class Company {
       return false;
     }
 
+    public double avarageSalary(String jobTitle){
+        if(jobTitle == null || jobTitle.isBlank()) throw new IllegalArgumentException("Invalid Jobtitle");
+
+        double sumSalary = 0.0;
+        int rounds = 0;
+        for(Employee e: employeesList){
+            if(jobTitle.equalsIgnoreCase(e.getJobTitle())){
+                sumSalary += e.getSalary();
+                rounds ++;
+            }
+        }
+
+        return rounds == 0 ? 00.00 : sumSalary / rounds;
+    }
+
     public List<Employee> getJobTitleEmployees(String jobTitle){
         if(jobTitle == null || jobTitle.isBlank()) throw new IllegalArgumentException("JobTitle invalid");
 
