@@ -50,6 +50,17 @@ public class Company {
         return true;
     }
 
+    public boolean pay(String id){
+        if(id == null || id.isBlank()) throw new IllegalArgumentException("Invalid id");
+
+        Employee e = findById(id);
+        if(e != null){
+            e.addPayCheck(LocalDate.now());
+            return true;
+        }
+      return false;
+    }
+
     public List<Employee> getJobTitleEmployees(String jobTitle){
         if(jobTitle == null || jobTitle.isBlank()) throw new IllegalArgumentException("JobTitle invalid");
 
