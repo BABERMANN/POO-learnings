@@ -35,4 +35,15 @@ public class Company {
         employeesList.add(employee);
         return true;
     }
+
+    public boolean fire(String id){
+        if(id == null || id.isBlank()) {
+            throw new IllegalArgumentException("Id nulo ou invalido");
+        }
+        Employee e = findById(id);
+        if(e == null) return false;
+
+        employeesList.remove(e);
+        return true;
+}
 }
