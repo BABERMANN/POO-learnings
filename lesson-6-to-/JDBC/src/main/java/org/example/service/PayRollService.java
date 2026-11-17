@@ -9,6 +9,11 @@ public class PayRollService {
     private Company company;
     private EmployeeService employeeService;
 
+    public PayRollService(Company company, EmployeeService employeeService) {
+        this.company = company;
+        this.employeeService = employeeService;
+    }
+
     public boolean pay(String id){
         if(id == null || id.isBlank()) throw new IllegalArgumentException("Invalid id");
 
