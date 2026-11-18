@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 public class PayRollService {
-    private Company company;
-    private EmployeeService employeeService;
+    final private Company company;
+    final private EmployeeService employeeService;
 
     public PayRollService(Company company, EmployeeService employeeService) {
         this.company = company;

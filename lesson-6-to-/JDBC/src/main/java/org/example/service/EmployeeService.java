@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.exception.EmployeeAlreadyExistsException;
 import org.example.model.Company;
 import org.example.model.Employee;
 
@@ -29,8 +30,9 @@ public class EmployeeService {
     }
 
     public boolean hire(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment) {
-        if (!isValid(id,name,jobTitle,salary,dateOfEmployment)) return false;
-        if(findById(id).isPresent()) return false;
+        if (!isValid(id,name,jobTitle,salary,dateOfEmployment)) throw new IllegalArgumentException("Invalid employee arguments");
+        if(findById(id).isPresent()) throw new EmployeeAlreadyExistsException("This employee already existis");
+
         Employee employee = new Employee(id, name, jobTitle, salary, dateOfEmployment);
         company.getEmployeesList().add(employee);
         return true;
