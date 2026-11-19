@@ -57,7 +57,7 @@ public class EmployeeService {
         return true;
     }
 
-    public boolean fire(String id){ //TODO fazer query remover do Banco
+    public boolean fire(String id){ //TODO validar id
         String sql = "DELETE FROM employee WHERE id = ?";
 
         try (Connection connection = DriverManager.getConnection(Database.URL);
