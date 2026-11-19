@@ -48,7 +48,7 @@ public class EmployeeService {
        return Optional.empty();
     }
 
-    public boolean hire(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment) {
+    public boolean hire(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment) { //TODO fazer query pesistir no banco
         if (!isValid(id,name,jobTitle,salary,dateOfEmployment)) throw new IllegalArgumentException("Invalid employee arguments");
         if(findById(id).isPresent()) throw new EmployeeAlreadyExistsException("This employee already existis");
 
@@ -57,14 +57,21 @@ public class EmployeeService {
         return true;
     }
 
-    public boolean fire(String id){
-        if(id == null || id.isBlank()) {
-            throw new IllegalArgumentException("Id null or invalid");
-        }
-        Optional<Employee> e = findById(id);
-        if(e.isEmpty()) return false;
+    public boolean fire(String id){ //TODO fazer query remover do Banco
+        String sql = "DELETE FROM employee WHERE id = ?";
 
-        company.getEmployeesList().remove(e.get());
-        return true;
+        try (Connection connection = DriverManager.getConnection(Database.URL);
+             PreparedStatement statement = connection.prepareStatement(sql)){
+
+            statement.setString(1,id);
+
+            int rows = statement.executeUpdate();
+
+            return rows > 0;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
