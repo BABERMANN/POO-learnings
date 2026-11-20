@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.database.Database;
 import org.example.exception.EmployeeAlreadyExistsException;
+import org.example.exception.EmployeeDoesNotExistsException;
 import org.example.model.Company;
 import org.example.model.Employee;
 
@@ -57,7 +58,8 @@ public class EmployeeService {
         return true;
     }
 
-    public boolean fire(String id){ //TODO validar id
+    public void fire(String id){
+
         String sql = "DELETE FROM employee WHERE id = ?";
 
         try (Connection connection = DriverManager.getConnection(Database.URL);
@@ -65,13 +67,13 @@ public class EmployeeService {
 
             statement.setString(1,id);
 
-            int rows = statement.executeUpdate();
-
-            return rows > 0;
+            if(statement.executeUpdate() == 0){
+                throw new EmployeeDoesNotExistsException("Employee: " + id + "does not exists");
+            }
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error finding employee " + id,e);
         }
     }
 }
