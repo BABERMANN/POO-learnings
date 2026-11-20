@@ -1,11 +1,13 @@
 package org.example.service;
 
+import com.sun.jdi.IntegerValue;
 import org.example.database.Database;
 import org.example.exception.EmployeeAlreadyExistsException;
 import org.example.exception.EmployeeDoesNotExistsException;
 import org.example.model.Company;
 import org.example.model.Employee;
 
+import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -49,13 +51,27 @@ public class EmployeeService {
        return Optional.empty();
     }
 
-    public boolean hire(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment) { //TODO fazer query pesistir no banco
+    public void hire(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment) {
         if (!isValid(id,name,jobTitle,salary,dateOfEmployment)) throw new IllegalArgumentException("Invalid employee arguments");
         if(findById(id).isPresent()) throw new EmployeeAlreadyExistsException("This employee already existis");
 
-        Employee employee = new Employee(id, name, jobTitle, salary, dateOfEmployment);
-        company.getEmployeesList().add(employee);
-        return true;
+        String sql = "INSERT INTO employee VALUES (?,?,?,?,?,?)";
+
+        try (Connection connection = DriverManager.getConnection(Database.URL);
+             PreparedStatement statement = connection.prepareStatement(sql) ){;
+
+             statement.setString(1,id);
+             statement.setString(2,name);
+             statement.setString(3,jobTitle);
+             statement.setString(4, dateOfEmployment.toString());
+             statement.setDouble(5,salary);
+             statement.setString(6, company.getId());
+             statement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Cannot insert this employee ", e);
+        }
     }
 
     public void fire(String id){
