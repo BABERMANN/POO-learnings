@@ -7,31 +7,31 @@ import java.util.Objects;
 
 
 public class Company {
-    private  String name;
-    private List<Employee> employeesList;
+    private String name;
+    private String id;
 
-    public Company(String name) {
-        employeesList = new ArrayList<>();
+    public Company(String name, String id) {
         this.name = name;
-    }
-
-    public List<Employee> getEmployeesList() {
-        return employeesList;
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public String getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Company company = (Company) o;
-        return Objects.equals(name, company.name);
+        return id == company.id && Objects.equals(name, company.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(name);
+        return Objects.hash(name, id);
     }
 }
