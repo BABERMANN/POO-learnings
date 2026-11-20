@@ -7,8 +7,8 @@ import java.util.Objects;
 
 
 public class Company {
-    private String name;
-    private String id;
+    final private String name;
+    final private String id;
 
     public Company(String name, String id) {
         this.name = name;
