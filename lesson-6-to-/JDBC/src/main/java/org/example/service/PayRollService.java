@@ -1,8 +1,14 @@
 package org.example.service;
 
+import org.example.database.Database;
+import org.example.exception.EmployeeDoesNotExistsException;
 import org.example.model.Company;
 import org.example.model.Employee;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -15,14 +21,27 @@ public class PayRollService {
         this.employeeService = employeeService;
     }
 
-    public boolean pay(String id){
-        if(id == null || id.isBlank()) throw new IllegalArgumentException("Invalid id");
+    public void pay(String id){
+        Employee employee = employeeService.findById(id)
+                .orElseThrow(() -> new EmployeeDoesNotExistsException("Employee that conatins id: " + id + "does not exist");
 
-        Optional<Employee> e = employeeService.findById(id);
-        if(e.isPresent()){
-            e.get().addPayCheck(LocalDate.now());
-            return true;
+        String sql = "INSERT INTO pay_check (employee_id,payday,salary) VALUES(?,?,?)";
+
+        try(Connection conection  = DriverManager.getConnection(Database.URL);
+            PreparedStatement statement = conection.prepareStatement(sql)){
+
+
+            statement.setString(1,id);
+            statement.setString(2,LocalDate.now().toString());
+            statement.setString(3,employee.getSalary().toString());
+
+            statement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Its  not possible to bind paycheks to this employee",e);
         }
-        return false;
+
+
     }
 }
