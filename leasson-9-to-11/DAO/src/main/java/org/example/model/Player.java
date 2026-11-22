@@ -3,15 +3,16 @@ package org.example.model;
 import java.util.Objects;
 
 public class Player {
-    private String name;
+    final private String id;
+    final private String name;
     private int number;
     private String position;
     private boolean isField;
 
-    public Player(String name, int number, String position) {
-        this.name = name;
+    public Player(String id, int number, String name) {
+        this.id = id;
         this.number = number;
-        this.position = position;
+        this.name = name;
     }
 
     public String getName() {
