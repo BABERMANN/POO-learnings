@@ -46,7 +46,7 @@ public class EmployeeService {
                        LocalDate.parse(rs.getString("date_of_employeement"))));
 
        } catch (SQLException e) {
-           throw new RuntimeException(e);
+           throw new RuntimeException("Cannot find this employee",e);
        }
        return Optional.empty();
     }
