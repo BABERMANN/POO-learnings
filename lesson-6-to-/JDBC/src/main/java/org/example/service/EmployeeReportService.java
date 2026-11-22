@@ -36,15 +36,25 @@ public class EmployeeReportService {
         return  0.0;
     }
 
-    public List<Employee> getJobTitleEmployees(String jobTitle){
-        if(jobTitle == null || jobTitle.isBlank()) throw new IllegalArgumentException("JobTitle invalid");
+    public List<String> getJobTitleEmployees(String jobTitle) {
+        String sql = "SELECT * FROM employee WHERE job_title = ?";
 
-        List<Employee> jobRelated = new ArrayList<>();
-        for(Employee e: company.getEmployeesList()) {
-            if(jobTitle.equalsIgnoreCase(e.getJobTitle())){
-                jobRelated.add(e);
+        List<String> listEmployee;
+        try (Connection connection = DriverManager.getConnection(Database.URL);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, jobTitle);
+
+            ResultSet rs = statement.executeQuery();
+
+            listEmployee = new ArrayList<>();
+            while (rs.next()) {
+                listEmployee.add(rs.getString("name"));
             }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Cannot find employees", e);
         }
-        return jobRelated;
+        return listEmployee;
     }
 }
