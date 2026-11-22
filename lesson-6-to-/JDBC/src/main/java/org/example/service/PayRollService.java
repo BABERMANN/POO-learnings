@@ -23,7 +23,7 @@ public class PayRollService {
 
     public void pay(String id){
         Employee employee = employeeService.findById(id)
-                .orElseThrow(() -> new EmployeeDoesNotExistsException("Employee that conatins id: " + id + "does not exist");
+                .orElseThrow(() -> new EmployeeDoesNotExistsException("Employee that conatins id: " + id + "does not exist"));
 
         String sql = "INSERT INTO pay_check (employee_id,payday,salary) VALUES(?,?,?)";
 
@@ -44,4 +44,21 @@ public class PayRollService {
 
 
     }
+
+    public void removePayCheck(String id){
+        String sql = "DELETE FROM pay_check WHERE id = ?";
+
+        try(Connection connection = DriverManager.getConnection(Database.URL);
+            PreparedStatement statement = connection.prepareStatement(sql)){
+
+            statement.setString(1,id);
+
+            if(statement.executeUpdate() == 0) throw new IllegalArgumentException("invalid id for paycheck");
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Cannot remove payckeck",e);
+        }
+
+    }
+
 }
