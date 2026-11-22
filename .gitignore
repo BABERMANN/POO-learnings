@@ -17,3 +17,6 @@ bin/
 # Sistema Operacional
 .DS_Store
 Thumbs.db
+
+banco.db
+identifier.sqlite
