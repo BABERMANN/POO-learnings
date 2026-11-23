@@ -51,4 +51,11 @@ public class TeamControler {
 
     }
 
+    public void delete (Integer id){
+        if(id == null || id <= 0) throw new IllegalArgumentException("invalid id");
+
+        teamDao.delete(id);
+    }
+
+
 }
