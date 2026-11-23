@@ -34,18 +34,6 @@ public class DataBase {
         )
         """;
 
-
-        String sqlRelacaoDeclaracaoDespesasimplificada = """
-        CREATE TABLE IF NOT EXISTS relacao_despesa_simplificada (
-            id_despesa    INTEGER,
-            id_declaracao INTEGER,
-            PRIMARY KEY (id_despesa, id_declaracao),
-            FOREIGN KEY(id_despesa) REFERENCES despesa(id) ON DELETE CASCADE,
-            FOREIGN KEY(id_declaracao) REFERENCES declaracao_simplificada(id) ON DELETE CASCADE
-        )
-        """;
-
-
         String sqlRelacaoDeclaracaoDespesascompleta = """
         CREATE TABLE IF NOT EXISTS relacao_despesa_completa (
             id_despesa    INTEGER,
@@ -63,7 +51,6 @@ public class DataBase {
             statement.execute(sqlDeclaracaoCompleta);
             statement.execute(sqlDeclaracaoSimplificada);
             statement.execute(sqlRelacaoDeclaracaoDespesascompleta);
-            statement.execute(sqlRelacaoDeclaracaoDespesasimplificada);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
