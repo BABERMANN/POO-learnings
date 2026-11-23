@@ -3,16 +3,20 @@ package org.example.model;
 import java.util.Objects;
 
 public class Team {
-    final private String id;
+    final private Integer id;
     final private String name;
     final private String baseLocation;
     private String coachName;
 
-    public Team(String id, String name, String baseLocation, String coachName) {
+    public Team(Integer id, String name, String baseLocation, String coachName) {
         this.id = id;
         this.name = name;
         this.baseLocation = baseLocation;
         this.coachName = coachName;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
