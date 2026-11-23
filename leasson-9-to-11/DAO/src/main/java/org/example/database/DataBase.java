@@ -3,7 +3,7 @@ package org.example.database;
 import java.sql.*;
 
 public class DataBase {
-    public static final String URL = "jdbc:sqlite:banco.db";
+    public static final String URL = "jdbc:sqlite:banco.db?foreign_keys=on";
 
     public static void init(){
         String teamSql = """
@@ -23,7 +23,7 @@ public class DataBase {
                 position        TEXT NOT NULL,
                 is_Field    INTEGER NOT NULL DEFAULT 0,
                 team_id     INTEGER,
-                FOREIGN KEY(team_id) REFERENCES team(id),
+                FOREIGN KEY(team_id) REFERENCES team(id) ON DELETE SET NULL,
                 CHECK (is_field IN(1,0))
                 )
             """;
