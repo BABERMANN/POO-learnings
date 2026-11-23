@@ -36,4 +36,19 @@ public class TeamControler {
 
     }
 
+    public void update (Team team){
+        if(team == null) throw new IllegalArgumentException("Invalid team");
+
+        if(team.getId() == null || team.getId() <= 0) throw new IllegalArgumentException("Invalid id");
+
+        if (team.getName() == null || team.getName().isEmpty()) throw new IllegalArgumentException("Invalid Team");
+
+        if(teamDao.findOne(team.getId()).isEmpty()) throw new IllegalArgumentException("Team not found");
+
+        TeamDTO teamDTO = new TeamDTO(team.getId(),team.getName(),team.getBaseLocation(),team.getCoachName());
+
+        teamDao.update(teamDTO);
+
+    }
+
 }
