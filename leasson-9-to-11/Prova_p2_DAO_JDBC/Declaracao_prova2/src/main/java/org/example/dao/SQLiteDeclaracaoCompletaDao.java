@@ -3,7 +3,6 @@ package org.example.dao;
 import org.example.database.ConnectionFactory;
 import org.example.model.DeclaracaoCompleta;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -71,7 +70,7 @@ public class SQLiteDeclaracaoCompletaDao implements DeclaracaoCompletaDao{
     }
 
     @Override
-    public Optional<DeclaracaoCompleta> update(DeclaracaoCompletaDto declaracaoCompletaDto) {
+    public void update(DeclaracaoCompletaDto declaracaoCompletaDto) {
         if(declaracaoCompletaDto == null) throw new IllegalArgumentException("Declaracao invalida");
 
         String sql = "UPDATE declaracao_completa SET ganho_tributavel = ?, valorJaPago = ?,WHERE id = ?";
@@ -81,12 +80,10 @@ public class SQLiteDeclaracaoCompletaDao implements DeclaracaoCompletaDao{
             statement.setDouble(1,declaracaoCompletaDto.ganhoTributavel());
             statement.setDouble(2,declaracaoCompletaDto.ganhoTributavel());
             statement.setInt(3,declaracaoCompletaDto.id());
-
-            if(statement.executeUpdate() == 0) throw new IllegalArgumentException("Cannot update declaracao");
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
