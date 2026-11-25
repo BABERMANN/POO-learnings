@@ -13,14 +13,14 @@ public class SQLiteDeclaracaoCompletaDao implements DeclaracaoCompletaDao{
 
 
     @Override
-    public void save(DeclaracaoCompleta declaracaoCompleta) {
+    public void save(DeclaracaoCompletaDto dto) {
 
         String sql = "INSERT INTO declaracao_completa (ganho_tributavel,valor_pago) VALUES (?,?)";
 
         try (var statement = ConnectionFactory.getPreparedStatment(sql)){
 
-            statement.setDouble(1,declaracaoCompleta.getGanhoTributavel());
-            statement.setDouble(2,declaracaoCompleta.getValorJapago());
+            statement.setDouble(1,dto.ganhoTributavel());
+            statement.setDouble(2,dto.valorPago());
 
             if(statement.executeUpdate() == 0) throw new IllegalArgumentException("Not possible to save declaracao completa");
         } catch (SQLException e) {

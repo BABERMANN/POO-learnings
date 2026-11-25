@@ -5,7 +5,7 @@ import org.example.model.DeclaracaoCompleta;
 import java.util.Optional;
 
 public interface DeclaracaoCompletaDao {
-    void save (DeclaracaoCompleta declaracaoCompleta);
+    void save (DeclaracaoCompletaDto dto);
     Optional<DeclaracaoCompleta> findOne (Integer id);
     void delete (Integer id);
     void update (DeclaracaoCompletaDto declaracaoCompletaDto);
